@@ -62,7 +62,7 @@ export default function Transfer({ smartAccount }: { smartAccount: BiconomySmart
             // Get the paymaster fee quote from Biconomy
             const biconomyPaymaster = smartAccount.paymaster as IHybridPaymaster<SponsorUserOperationDto>;
             const feeQuoteResponse = await biconomyPaymaster.getPaymasterFeeQuotesOrData(userOp, {
-                mode: PaymasterMode.SPONSORED,
+                mode: PaymasterMode.ERC20,
                 tokenList: [],
                 preferredToken: USDC_CONTRACT_ADDRESS,
             });
@@ -87,7 +87,7 @@ export default function Transfer({ smartAccount }: { smartAccount: BiconomySmart
 
             // Get the calldata for the paymaster
             const paymasterServiceData = {
-                mode: PaymasterMode.SPONSORED,
+                mode: PaymasterMode.ERC20,
                 feeTokenAddress: USDC_CONTRACT_ADDRESS,
                 calculateGasLimits: true,
             };
